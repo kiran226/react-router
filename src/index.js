@@ -105,7 +105,7 @@ function CourseId(){
       <h1>URL Params is : {courseid}</h1>
       <button
         onClick={()=>{
-          navigate("/dashboard", {state :"299"} );
+          navigate("/dashboard", {state : courseid} );
         }}
        className='btn btn-warning'>Price</button>
     </div>
