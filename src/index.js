@@ -3,7 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
-import {BrowserRouter as Router,Routes,Route,Navigate,Link ,Outlet} from 'react-router-dom'
+import {BrowserRouter as Router,
+        Routes,
+        Route,
+        Navigate,
+        Link,
+        Outlet,
+        useParams
+      } from 'react-router-dom'
 
 ReactDOM.render(
  <Router>
@@ -11,7 +18,9 @@ ReactDOM.render(
      <Route path="/" element={<Home/>}/>
      <Route path="/myapps" element={<Navigate replace to="/learn" /> } />
      <Route path="/learn" element={<Learn/>}>
-       <Route path="courses" element={<Course/>} />
+       <Route path="courses" element={<Course/>} >
+          <Route path=':courseid' element={<CourseId />} />
+       </Route>
        <Route path="bundles" element={<Bundle/>} />
      </Route>
    </Routes>
@@ -51,6 +60,7 @@ function Course(){
     <div>
       Course List
       <h4>Course Card</h4>
+      <Outlet />
     </div>
   )
 }
@@ -60,6 +70,15 @@ function Bundle(){
     <div>
       Bundle List
       <h4>Bundle Card</h4>
+    </div>
+  )
+}
+
+function CourseId(){
+  const {courseid}= useParams();
+  return(
+    <div>
+      <h1>URL Params is : {courseid}</h1>
     </div>
   )
 }
