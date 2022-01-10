@@ -107,7 +107,13 @@ function CourseId(){
         onClick={()=>{
           navigate("/dashboard", {state : courseid} );
         }}
-       className='btn btn-warning'>Price</button>
+         className='btn btn-warning'>
+         Price
+      </button>
+
+      <Link to="/dashboard" state={"Python"} >
+        Test Link
+      </Link>
     </div>
   )
 }
